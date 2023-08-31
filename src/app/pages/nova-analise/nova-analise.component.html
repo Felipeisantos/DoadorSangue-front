@@ -1,1 +1,12 @@
-<p>nova-analise works!</p>
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <input class="w-25" type="file" (change)="onFileSelected($event)">
+        </div>
+
+        <div class="row">
+            <button class="w-25" (click)="uploadJson()">Upload JSON</button>
+        </div>
+        <mat-spinner *ngIf="uploading" diameter="50" color="primary"></mat-spinner>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { NovaAnaliseComponent } from './pages/nova-analise/nova-analise.componen
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResultadoAnaliseComponent } from './pages/resultado-analise/resultado-analise.component'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ResultadoAnaliseComponent } from './pages/resultado-analise/resultado-a
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

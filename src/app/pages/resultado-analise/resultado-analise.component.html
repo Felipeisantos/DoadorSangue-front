@@ -1,30 +1,101 @@
 <div class="container mt-4">
   <div class="card">
     <div class="card-header">
-      <h2>Resultados da Análise</h2>
+      <h2>Resultados da Análise {{ id }}</h2>
     </div>
     <div class="card-body">
       <h3>Candidato por Estado</h3>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="estadoDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Exibir Candidatos por Estado
-        </button>
-        <div class="dropdown-menu" aria-labelledby="estadoDropdown">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Estado</th>
-                <th>Candidatos</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of candidatoPorEstado">
-                <td>{{ item.chave }}</td>
-                <td>{{ item.valor }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="table-container">
+        <table class="table table-bordered table-responsive">
+          <thead>
+            <tr>
+              <th class="w-50 p-3">Estado</th>
+              <th class="w-50 p-3">Candidatos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of candidatoPorEstado">
+              <td class="align-middle">{{ item.chave }}</td>
+              <td class="align-middle">{{ item.valor }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>IMC Médio por Faixa de Idade</h3>
+      <div class="table-container-auto">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="w-50 p-3">Faixa de Idade</th>
+              <th class="w-50 p-3">IMC Médio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of imcMedioPorFaixaDeIdade">
+              <td class="align-middle">{{ item.chave }}</td>
+              <td class="align-middle">{{ roundValue(item.valor) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Porcentagem de obesidade por genero</h3>
+      <div class="table-container-auto">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="w-50 p-3">Sexo</th>
+              <th class="w-50 p-3">Obesidade %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of porcentagemObesidadePorGenero">
+              <td class="align-middle">{{ item.chave }}</td>
+              <td class="align-middle">{{ roundValue(item.valor) }}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Média de idade por tipo sanguíneo</h3>
+      <div class="table-container-auto">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="w-50 p-3">Tipo Sanguíneo</th>
+              <th class="w-50 p-3">Média de idade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mediaIdadeTipoSanguineo">
+              <td class="align-middle">{{ item.chave }}</td>
+              <td class="align-middle">{{ roundValue(item.valor) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Potenciais doadores por tipo sanguíneo</h3>
+      <div class="table-container-auto">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="w-50 p-3">Tipo Sanguíneo</th>
+              <th class="w-50 p-3">Quantidade de doadores</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mediaIdadeTipoSanguineo">
+              <td class="align-middle">{{ item.chave }}</td>
+              <td class="align-middle">{{ roundValue(item.valor) }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

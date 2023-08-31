@@ -17,4 +17,8 @@ export class DoadorSangueService {
     return this.http.get(`${this.baseUrl + "analise/listar/"}${idAnalise}`)
   }
 
+  getTodasAnalises() {
+    return this.http.get<any>(`${this.baseUrl + "analise/listar"}`).toPromise();
+  }
+
 }
