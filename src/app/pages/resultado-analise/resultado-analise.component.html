@@ -1,6 +1,31 @@
-<div id = "divChart">
-    <canvas id="mychart"></canvas>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>Resultados da Análise</h2>
+    </div>
+    <div class="card-body">
+      <h3>Candidato por Estado</h3>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="estadoDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Exibir Candidatos por Estado
+        </button>
+        <div class="dropdown-menu" aria-labelledby="estadoDropdown">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Estado</th>
+                <th>Candidatos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of candidatoPorEstado">
+                <td>{{ item.chave }}</td>
+                <td>{{ item.valor }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<!-- <script type="module" src="dimensions.js"></script> -->
-<script type="module" src="acquisitions.js"></script>
