@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DoadorSangueService } from 'src/app/services/doador-sangue.service';
 
 @Component({
@@ -8,38 +8,38 @@ import { DoadorSangueService } from 'src/app/services/doador-sangue.service';
   styleUrls: ['./listar-analise.component.css']
 })
 export class ListarAnaliseComponent {
-  analyses: any[] = [];
+  analises: any[] = [];
   specificAnalysis: any;
 
-  constructor(
-    private route: ActivatedRoute,
+  constructor(private router: Router,
     private service: DoadorSangueService
   ) { }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-
-    if (id) {
-      this.loadSpecificAnalysis(id);
-    } else {
-      this.loadAllAnalyses();
-    }
+    this.loadAllAnalyses();
   }
 
-  // Load all analyses
-  loadAllAnalyses() {
+  redirecionarParaDetalhes(id: any) {
+    console.log("passei")
+    this.router.navigate(['/resultado-analise', id]);
+  }
+  formatarData(data: any) {
+    const option: any = {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
 
-    console.log("lista tudo");
-    this.analyses = [
-      { title: 'Analysis 1', description: 'Description of Analysis 1' },
-      { title: 'Analysis 2', description: 'Description of Analysis 2' },
-      { title: 'Analysis 3', description: 'Description of Analysis 3' },
-    ];
+    return new Date(data).toLocaleString('pt-BR', option);
   }
 
-  loadSpecificAnalysis(id: Number) {
-    const retorno = this.service.getAnalisePorId(id)
-    console.log(retorno)
-    this.specificAnalysis = null;
+  async loadAllAnalyses() {
+    this.analises = await this.service.getTodasAnalises();
+    this.analises.forEach(analise => {
+      analise.dataRequisicaoFormatada = this.formatarData(analise.dataRequisicao);
+    });
+
   }
 }

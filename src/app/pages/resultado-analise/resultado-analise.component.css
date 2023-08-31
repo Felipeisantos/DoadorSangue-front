@@ -1,0 +1,8 @@
+.table-container {
+    max-height: 350px;
+    overflow-y: scroll;
+}
+
+.table-container-auto {
+    overflow-y: scroll;
+}
