@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResultadoAnaliseComponent } from './pages/resultado-analise/resultado-analise.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,13 +22,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ListarAnaliseComponent,
     NovaAnaliseComponent,
     ResultadoAnaliseComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

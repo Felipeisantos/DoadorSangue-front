@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DoadorSangueService } from 'src/app/services/doador-sangue.service';
+import { APIService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-listar-analise',
@@ -12,7 +12,7 @@ export class ListarAnaliseComponent {
   specificAnalysis: any;
 
   constructor(private router: Router,
-    private service: DoadorSangueService
+    private service: APIService
   ) { }
 
   ngOnInit(): void {
@@ -20,7 +20,6 @@ export class ListarAnaliseComponent {
   }
 
   redirecionarParaDetalhes(id: any) {
-    console.log("passei")
     this.router.navigate(['/resultado-analise', id]);
   }
   formatarData(data: any) {
@@ -36,10 +35,14 @@ export class ListarAnaliseComponent {
   }
 
   async loadAllAnalyses() {
-    this.analises = await this.service.getTodasAnalises();
-    this.analises.forEach(analise => {
-      analise.dataRequisicaoFormatada = this.formatarData(analise.dataRequisicao);
-    });
-
+    try {
+      (await this.service.getTodasAnalises()).subscribe((analises: any[]) =>
+        this.analises = analises,
+        (error: any) =>
+          console.error('Erro ao carregar análises:', error)
+      );
+    } catch (error) {
+      console.error('Erro ao carregar análises:', error);
+    }
   }
 }
