@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CandidatoPorEstado } from 'src/app/core/model/candidato-por-estado';
 import { ImcMedioPorIdade } from 'src/app/core/model/imc-medio-por-idade';
 import { MediaIdadeTipoSanguineo } from 'src/app/core/model/media-idade-tipo-sanguineo';
 import { PorcentagemObesidadeGenero } from 'src/app/core/model/porcentagem-obesidade-genero';
 import { PotencialDoadorTipoSanguineo } from 'src/app/core/model/potencial-doador-tipo-sanguineo';
-import { DoadorSangueService } from 'src/app/services/doador-sangue.service';
+import { APIService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-resultado-analise',
@@ -22,14 +22,14 @@ export class ResultadoAnaliseComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private service: DoadorSangueService
+    private service: APIService,
+    private injector: Injector
   ) {
 
   }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-
     if (id) {
       this.loadSpecificAnalysis(id);
     } else {
@@ -43,9 +43,9 @@ export class ResultadoAnaliseComponent {
   }
   roundValue = (value: number) => Math.round((value + Number.EPSILON) * 100) / 100
 
-  loadSpecificAnalysis(id: Number) {
+  async loadSpecificAnalysis(id: Number) {
     this.id = id;
-    this.service.getAnalisePorId(id).subscribe((data: any) => {
+    (await this.service.getAnalisePorId(id)).subscribe((data: any) => {
       this.candidatoPorEstado = data.resultadoAnalise.candidatoPorEstado;
       this.imcMedioPorFaixaDeIdade = data.resultadoAnalise.imcMedioPorFaixaDeIdade;
       this.porcentagemObesidadePorGenero = data.resultadoAnalise.porcentagemObesidadePorGenero;
