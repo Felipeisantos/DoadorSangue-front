@@ -37,9 +37,15 @@ export class AuthenticationService {
     getToken(): string | null {
         return sessionStorage.getItem('token')
     }
+
+    setExpirationDate(data: string) {
+        sessionStorage.setItem('expiration-date', data)
+    }
+
     getExpirationDate(): string | null {
         return sessionStorage.getItem('expiration-date')
     }
+
     isTokenExpirated(): boolean {
         const expirationDateStr = sessionStorage.getItem('expiration-date');
 
@@ -47,13 +53,13 @@ export class AuthenticationService {
             const expirationDate = new Date(expirationDateStr);
             const currentDate = new Date();
 
-            if (currentDate > expirationDate) {
+            if (currentDate > expirationDate)
                 return true;
-            } else {
+            else
                 return false;
-            }
-        } else {
+
+        } else
             return true;
-        }
+
     }
 }

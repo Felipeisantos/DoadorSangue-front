@@ -11,6 +11,7 @@
                     <input type="password" class="form-control" id="password" formControlName="password" />
                 </div>
                 <button type="submit" class="btn custom-btn mt-1">Entrar</button>
+                <button type="button" class="btn custom-btn mt-1 custom-btn-right" [routerLink]="['/cadastro']">Ir para Cadastro</button>
             </form>
             <nav *ngIf="errorLogin" class="erro-login">
                 <p style="color: red;">Login ou senha incorretos.</p>

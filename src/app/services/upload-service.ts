@@ -13,9 +13,8 @@ export class UploadService {
 
     async uploadJson(jsonData: any) {
         try {
-            this.service.uploadCandidatos(jsonData)
+            return await this.service.uploadCandidatos(jsonData)
         } catch (error) {
-            throw error
         }
     }
 }

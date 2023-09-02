@@ -41,7 +41,6 @@ export class ListarAnaliseComponent {
         analise.dataRequisicaoFormatada = this.formatarData(analise.dataRequisicao)
       })
     } catch (error) {
-      console.error('Erro ao carregar análises:', error)
     }
   }
 }

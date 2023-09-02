@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UploadService } from 'src/app/services/upload-service';
 @Component({
   selector: 'app-nova-analise',
@@ -9,7 +10,9 @@ export class NovaAnaliseComponent {
   uploadedJson: any
   uploading = false
   fileName = '';
-  constructor(private uploadService: UploadService) { }
+  constructor(private uploadService: UploadService,
+    private router: Router
+  ) { }
 
   onFileSelected(event: any) {
     const file = event.target.files[0]
@@ -28,10 +31,9 @@ export class NovaAnaliseComponent {
   async uploadJson() {
     try {
       this.uploading = true
-      const response = await this.uploadService.uploadJson(this.uploadedJson)
-      console.log('Upload successful', response)
+      const response: any = await this.uploadService.uploadJson(this.uploadedJson)
+      this.router.navigate(['/resultado-analise', response.id])
     } catch (error) {
-      console.error('Upload failed', error)
     } finally {
       this.uploading = false
     }

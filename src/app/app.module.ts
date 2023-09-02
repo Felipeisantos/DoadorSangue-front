@@ -14,6 +14,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
     NovaAnaliseComponent,
     ResultadoAnaliseComponent,
     LoginComponent,
+    CadastroComponent,
   ],
   imports: [
     BrowserModule,

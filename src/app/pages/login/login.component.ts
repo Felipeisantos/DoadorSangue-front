@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -11,6 +11,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class LoginComponent {
   loginForm: any
   errorLogin: boolean = false
+
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthenticationService) {
