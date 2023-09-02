@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { APIService } from './api.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UploadService {
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private service: APIService,
+        private injector: Injector) { }
 
     async uploadJson(jsonData: any) {
-        const apiUrl = 'http://localhost:8080/doador/processar-candidatos';
-
         try {
-            const response = await this.http.post(apiUrl, jsonData).toPromise();
-            return response;
+            this.service.uploadCandidatos(jsonData)
         } catch (error) {
-            throw error;
+            throw error
         }
     }
 }

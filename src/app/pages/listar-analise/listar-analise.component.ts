@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DoadorSangueService } from 'src/app/services/doador-sangue.service';
+import { APIService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-listar-analise',
@@ -8,20 +8,19 @@ import { DoadorSangueService } from 'src/app/services/doador-sangue.service';
   styleUrls: ['./listar-analise.component.css']
 })
 export class ListarAnaliseComponent {
-  analises: any[] = [];
-  specificAnalysis: any;
+  analises: any[] = []
+  specificAnalysis: any
 
   constructor(private router: Router,
-    private service: DoadorSangueService
+    private service: APIService
   ) { }
 
   ngOnInit(): void {
-    this.loadAllAnalyses();
+    this.loadAllAnalyses()
   }
 
   redirecionarParaDetalhes(id: any) {
-    console.log("passei")
-    this.router.navigate(['/resultado-analise', id]);
+    this.router.navigate(['/resultado-analise', id])
   }
   formatarData(data: any) {
     const option: any = {
@@ -30,16 +29,19 @@ export class ListarAnaliseComponent {
       year: 'numeric',
       hour: 'numeric',
       minute: 'numeric',
-    };
+    }
 
-    return new Date(data).toLocaleString('pt-BR', option);
+    return new Date(data).toLocaleString('pt-BR', option)
   }
 
   async loadAllAnalyses() {
-    this.analises = await this.service.getTodasAnalises();
-    this.analises.forEach(analise => {
-      analise.dataRequisicaoFormatada = this.formatarData(analise.dataRequisicao);
-    });
-
+    try {
+      this.analises = await this.service.getTodasAnalises()
+      this.analises.forEach(analise => {
+        analise.dataRequisicaoFormatada = this.formatarData(analise.dataRequisicao)
+      })
+    } catch (error) {
+      console.error('Erro ao carregar análises:', error)
+    }
   }
 }
