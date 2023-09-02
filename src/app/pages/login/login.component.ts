@@ -18,7 +18,6 @@ export class LoginComponent {
 
 
   ngOnInit() {
-    const token = this.authService.getToken()
     if (this.authService.getToken()) {
       this.router.navigate(['/listar-analise'])
     }

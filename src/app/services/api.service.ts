@@ -22,8 +22,6 @@ export class APIService {
       new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
-
-    console.log(token);
     return { headers };
   }
 

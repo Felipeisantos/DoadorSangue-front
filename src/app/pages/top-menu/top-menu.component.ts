@@ -9,19 +9,38 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class TopMenuComponent {
 
+  tempoRestanteToken: string = "";
   constructor(
-    private authService: AuthenticationService,
-    private route: Router,
-    private injector: Injector) { }
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
-
+    this.calcularTempoRestanteToken();
+    setInterval(() => {
+      this.calcularTempoRestanteToken();
+    }, 1000);
   }
   logout() {
     this.authService.logout()
-    this.route.navigate(['/login'])
   }
-  isAuthenticated() {
-    return this.authService.getToken()
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated()
+  }
+
+  calcularTempoRestanteToken(): void {
+    const expirationDateStr: string | null = this.authService.getExpirationDate();
+    if (expirationDateStr !== null) {
+      const expirationDate = new Date(expirationDateStr);
+
+      // Obtém a data atual
+      const currentDate = new Date();
+
+      // Calcula a diferença em milissegundos entre a data de expiração e a data atual
+      const timeDifferenceMillis = expirationDate.getTime() - currentDate.getTime();
+
+      // Calcula os dias, horas, minutos e segundos restantes
+      const seconds = Math.floor(timeDifferenceMillis / 1000) % 60;
+      const minutes = Math.floor(timeDifferenceMillis / (1000 * 60)) % 60;
+      this.tempoRestanteToken = `${minutes}:${seconds}`;
+    }
   }
 }

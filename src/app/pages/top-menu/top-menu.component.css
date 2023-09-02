@@ -1,0 +1,12 @@
+.navbar {
+    margin-bottom: 3%;
+}
+
+.token-expiration {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+}

@@ -1,7 +1,21 @@
-<nav *ngIf="isAuthenticated()"> <!-- Renderiza o HTML somente se isAuthenticated() for verdadeiro -->
-  <ul>
-    <li><a routerLink="/listar-analise">Listar Todas as Análises</a></li>
-    <li><a routerLink="/nova-analise">Nova Análise</a></li>
-    <li><button (click)="logout()">Logout</button></li>
-  </ul>
+<nav *ngIf="isAuthenticated()" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/listar-analise">Listar Todas as Análises</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/nova-analise">Nova Análise</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <div class="token-expiration">
+    Tempo: {{ tempoRestanteToken }}
+  </div>
 </nav>

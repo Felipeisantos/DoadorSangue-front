@@ -1,10 +1,7 @@
 .btn-animated {
-  transition: transform 0.2s; /* Define a propriedade a ser animada e a duração da animação */
+  transition: transform 0.2s;
 }
 
 .btn-animated:hover {
-  transform: scale(1.1); /* Aplica a escala ao passar o mouse sobre a div */
-}
-*{
-  color:white;
+  transform: scale(1.1);
 }

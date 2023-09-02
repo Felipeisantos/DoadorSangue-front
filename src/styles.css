@@ -19,14 +19,12 @@ body {
     color: white;
 }
 
-/* Estilize o botão de foco (quando o botão é clicado ou selecionado) */
 .custom-btn:focus {
     background-color: #3c7c76;
     border-color: #3c7c76;
     color: white;
 }
 
-/* Estilize o botão quando passar o mouse por cima */
 .custom-btn:hover {
     background-color: #449090;
     border-color: #449090;
