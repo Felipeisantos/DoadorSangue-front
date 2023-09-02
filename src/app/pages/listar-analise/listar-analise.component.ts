@@ -8,19 +8,19 @@ import { APIService } from 'src/app/services/api.service';
   styleUrls: ['./listar-analise.component.css']
 })
 export class ListarAnaliseComponent {
-  analises: any[] = [];
-  specificAnalysis: any;
+  analises: any[] = []
+  specificAnalysis: any
 
   constructor(private router: Router,
     private service: APIService
   ) { }
 
   ngOnInit(): void {
-    this.loadAllAnalyses();
+    this.loadAllAnalyses()
   }
 
   redirecionarParaDetalhes(id: any) {
-    this.router.navigate(['/resultado-analise', id]);
+    this.router.navigate(['/resultado-analise', id])
   }
   formatarData(data: any) {
     const option: any = {
@@ -29,20 +29,19 @@ export class ListarAnaliseComponent {
       year: 'numeric',
       hour: 'numeric',
       minute: 'numeric',
-    };
+    }
 
-    return new Date(data).toLocaleString('pt-BR', option);
+    return new Date(data).toLocaleString('pt-BR', option)
   }
 
   async loadAllAnalyses() {
     try {
-      (await this.service.getTodasAnalises()).subscribe((analises: any[]) =>
-        this.analises = analises,
-        (error: any) =>
-          console.error('Erro ao carregar análises:', error)
-      );
+      this.analises = await this.service.getTodasAnalises()
+      this.analises.forEach(analise => {
+        analise.dataRequisicaoFormatada = this.formatarData(analise.dataRequisicao)
+      })
     } catch (error) {
-      console.error('Erro ao carregar análises:', error);
+      console.error('Erro ao carregar análises:', error)
     }
   }
 }

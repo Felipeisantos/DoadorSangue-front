@@ -3,15 +3,18 @@
         <div class="card-body">
             <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                 <div class="form-group">
-                    <label for="usuario">E-mail</label>
+                    <label for="email">E-mail</label>
                     <input id="email" type="email" class="form-control" formControlName="email" />
                 </div>
                 <div class="form-group">
                     <label for="password">Senha</label>
                     <input type="password" class="form-control" id="password" formControlName="password" />
                 </div>
-                <button type="submit" class="btn btn-primary">Entrar</button>
+                <button type="submit" class="btn btn-primary mt-1">Entrar</button>
             </form>
+            <nav *ngIf="errorLogin" class="erro-login">
+                <p style="color: red;">Login ou senha incorretos.</p>
+            </nav>
         </div>
     </div>
 </div>

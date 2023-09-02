@@ -1,47 +1,60 @@
-import { HttpClient, HttpHeaders, HttpParamsOptions } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class APIService {
-  responseData: any;
-  private baseUrl: String = "";
+  private baseUrl: string = 'http://localhost:8080/'
+
   constructor(
-    private http: HttpClient,
-    private authService: AuthenticationService
-  ) {
-    this.baseUrl = "http://localhost:8080/"
+    private http: HttpClient
+  ) { }
+
+  private getOptions(data?: string) {
+    const token = sessionStorage.getItem('token');
+    const headers = data !== undefined ?
+      new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }) :
+      new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+    console.log(token);
+    return { headers };
   }
 
-  getOption(): { headers: HttpHeaders; } {
-    return {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + this.authService.getToken()
-      })
-    };;
+  public async uploadCandidatos(jsonData?: string) {
+    try {
+      const response = await this.http.post(`${this.baseUrl}api/v1/doador/processar-candidatos`, jsonData, this.getOptions(jsonData)).toPromise()
+      return response
+    } catch (error) {
+      throw error
+    }
   }
-  public async getAnalisePorId(idAnalise: Number) {
-    return await this.http.get<any>(`${this.baseUrl + "api/v1/analise/listar/"}${idAnalise}`, this.getOption())
+  public async getAnalisePorId(idAnalise: number) {
+    return this.http.get<any>(`${this.baseUrl}api/v1/analise/listar/${idAnalise}`, this.getOptions())
   }
 
   public async getTodasAnalises() {
-    return await this.http.get<any>(`${this.baseUrl}api/v1/analise/listar`, this.getOption());
+    try {
+      const response = await this.http.get<any>(`${this.baseUrl}api/v1/analise/listar`, this.getOptions()).toPromise()
+      return response
+    } catch (error) {
+      throw error
+    }
   }
-  async login(email: string, password: string): Promise<string> {
-    const credentials = { email, password };
 
-    return new Promise<string>((resolve, reject) => {
-      this.http.post<any>(`${this.baseUrl}api/v1/auth/signin`, credentials).subscribe(
-        (response) => {
-          const token = response.token;
-          resolve(token);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
-    });
+
+  public async login({ email, password }: { email: string; password: string; }) {
+    try {
+      const response = await this.http.post<any>(`${this.baseUrl}api/v1/auth/signin`, { email, password }).toPromise()
+      return response
+    } catch (error) {
+      throw error
+    }
   }
 }

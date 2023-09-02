@@ -1,6 +1,7 @@
-<nav>
+<nav *ngIf="isAuthenticated()"> <!-- Renderiza o HTML somente se isAuthenticated() for verdadeiro -->
   <ul>
     <li><a routerLink="/listar-analise">Listar Todas as Análises</a></li>
     <li><a routerLink="/nova-analise">Nova Análise</a></li>
+    <li><button (click)="logout()">Logout</button></li>
   </ul>
 </nav>

@@ -3,7 +3,7 @@ export class AnaliseComponent<T> {
     valor!: T;
 
     constructor(chave: string, valor: T) {
-        this.chave = chave;
-        this.valor = valor;
+        this.chave = chave
+        this.valor = valor
     }
 }

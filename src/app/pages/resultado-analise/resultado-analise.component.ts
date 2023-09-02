@@ -14,11 +14,11 @@ import { APIService } from 'src/app/services/api.service';
 })
 export class ResultadoAnaliseComponent {
   id: Number = 0;
-  candidatoPorEstado: CandidatoPorEstado[] = [];
-  imcMedioPorFaixaDeIdade: ImcMedioPorIdade[] = [];
-  mediaIdadeTipoSanguineo: MediaIdadeTipoSanguineo[] = [];
-  porcentagemObesidadePorGenero: PorcentagemObesidadeGenero[] = [];
-  potencialDoadorPorTipoSanguineo: PotencialDoadorTipoSanguineo[] = [];
+  candidatoPorEstado: CandidatoPorEstado[] = []
+  imcMedioPorFaixaDeIdade: ImcMedioPorIdade[] = []
+  mediaIdadeTipoSanguineo: MediaIdadeTipoSanguineo[] = []
+  porcentagemObesidadePorGenero: PorcentagemObesidadeGenero[] = []
+  potencialDoadorPorTipoSanguineo: PotencialDoadorTipoSanguineo[] = []
 
   constructor(
     private route: ActivatedRoute,
@@ -29,11 +29,11 @@ export class ResultadoAnaliseComponent {
   }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = Number(this.route.snapshot.paramMap.get('id'))
     if (id) {
-      this.loadSpecificAnalysis(id);
+      this.loadSpecificAnalysis(id)
     } else {
-      this.loadAllAnalyses();
+      this.loadAllAnalyses()
     }
   }
 
@@ -43,15 +43,14 @@ export class ResultadoAnaliseComponent {
   }
   roundValue = (value: number) => Math.round((value + Number.EPSILON) * 100) / 100
 
-  async loadSpecificAnalysis(id: Number) {
-    this.id = id;
+  async loadSpecificAnalysis(id: number) {
     (await this.service.getAnalisePorId(id)).subscribe((data: any) => {
-      this.candidatoPorEstado = data.resultadoAnalise.candidatoPorEstado;
-      this.imcMedioPorFaixaDeIdade = data.resultadoAnalise.imcMedioPorFaixaDeIdade;
-      this.porcentagemObesidadePorGenero = data.resultadoAnalise.porcentagemObesidadePorGenero;
-      this.mediaIdadeTipoSanguineo = data.resultadoAnalise.mediaIdadeTipoSanguineo;
-      this.potencialDoadorPorTipoSanguineo = data.resultadoAnalise.potenciaisDoadoresPorTipoSanguineo;
-    });
-    console.log(this.candidatoPorEstado)
+      this.candidatoPorEstado = data.resultadoAnalise.candidatoPorEstado
+      this.imcMedioPorFaixaDeIdade = data.resultadoAnalise.imcMedioPorFaixaDeIdade
+      this.porcentagemObesidadePorGenero = data.resultadoAnalise.porcentagemObesidadePorGenero
+      this.mediaIdadeTipoSanguineo = data.resultadoAnalise.mediaIdadeTipoSanguineo
+      this.potencialDoadorPorTipoSanguineo = data.resultadoAnalise.potenciaisDoadoresPorTipoSanguineo
+    })
+    this.id = id
   }
 }
