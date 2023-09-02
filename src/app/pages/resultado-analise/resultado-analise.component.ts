@@ -42,6 +42,7 @@ export class ResultadoAnaliseComponent {
 
   }
   roundValue = (value: number) => Math.round((value + Number.EPSILON) * 100) / 100
+  roundValueFixed = (value: number) => Math.round(value);
 
   async loadSpecificAnalysis(id: number) {
     (await this.service.getAnalisePorId(id)).subscribe((data: any) => {

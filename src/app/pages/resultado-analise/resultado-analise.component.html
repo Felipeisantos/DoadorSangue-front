@@ -1,10 +1,10 @@
 <div class="container mt-4">
   <div class="card">
     <div class="card-header">
-      <h2>Resultados da Análise {{ id }}</h2>
+      <h2>Resultados da análise {{ id }}</h2>
     </div>
     <div class="card-body">
-      <h3>Candidato por Estado</h3>
+      <h3>Candidato por estado</h3>
       <div class="table-container">
         <table class="table table-bordered table-responsive">
           <thead>
@@ -23,13 +23,13 @@
       </div>
     </div>
     <div class="card-body">
-      <h3>IMC Médio por Faixa de Idade</h3>
+      <h3>IMC Médio por faixa de idade</h3>
       <div class="table-container-auto">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th class="w-50 p-3">Faixa de Idade</th>
-              <th class="w-50 p-3">IMC Médio</th>
+              <th class="w-50 p-3">Faixa de idade</th>
+              <th class="w-50 p-3">IMC médio</th>
             </tr>
           </thead>
           <tbody>
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="card-body">
-      <h3>Porcentagem de obesidade por genero</h3>
+      <h3>Porcentagem de obesidade por gênero</h3>
       <div class="table-container-auto">
         <table class="table table-bordered">
           <thead>
@@ -66,14 +66,14 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th class="w-50 p-3">Tipo Sanguíneo</th>
+              <th class="w-50 p-3">Tipo sanguíneo</th>
               <th class="w-50 p-3">Média de idade</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of mediaIdadeTipoSanguineo">
               <td class="align-middle">{{ item.chave }}</td>
-              <td class="align-middle">{{ roundValue(item.valor) }}</td>
+              <td class="align-middle">{{ roundValueFixed(item.valor) }}</td>
             </tr>
           </tbody>
         </table>
@@ -85,14 +85,14 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th class="w-50 p-3">Tipo Sanguíneo</th>
+              <th class="w-50 p-3">Tipo sanguíneo</th>
               <th class="w-50 p-3">Quantidade de doadores</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of mediaIdadeTipoSanguineo">
               <td class="align-middle">{{ item.chave }}</td>
-              <td class="align-middle">{{ roundValue(item.valor) }}</td>
+              <td class="align-middle">{{ roundValueFixed(item.valor) }}</td>
             </tr>
           </tbody>
         </table>

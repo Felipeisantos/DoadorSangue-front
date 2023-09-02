@@ -1,12 +1,20 @@
 <div class="container">
-    <div class="row">
-        <div class="row">
-            <input class="w-25" type="file" (change)="onFileSelected($event)">
-        </div>
+    <div class="row flex-column align-items-center">
+        <div class="col">
+            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
 
-        <div class="row">
-            <button class="w-25" (click)="uploadJson()">Upload JSON</button>
+            <div class="file-upload">
+
+                {{fileName || "Escolha um arquivo"}}
+
+                <button mat-mini-fab color="primary" class="upload-btn custom-input" (click)="fileUpload.click()">
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+            </div>
         </div>
-        <mat-spinner *ngIf="uploading" diameter="50" color="primary"></mat-spinner>
+        <div class="col">
+            <button class="custom-btn" (click)="uploadJson()">Upload JSON</button>
+        </div>
     </div>
+    <mat-spinner *ngIf="uploading" diameter="50" color="primary" class="d-block mx-auto mt-3"></mat-spinner>
 </div>

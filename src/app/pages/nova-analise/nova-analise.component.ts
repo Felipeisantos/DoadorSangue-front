@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UploadService } from 'src/app/services/upload-service';
-
 @Component({
   selector: 'app-nova-analise',
   templateUrl: './nova-analise.component.html',
@@ -9,13 +8,14 @@ import { UploadService } from 'src/app/services/upload-service';
 export class NovaAnaliseComponent {
   uploadedJson: any
   uploading = false
-
+  fileName = '';
   constructor(private uploadService: UploadService) { }
 
   onFileSelected(event: any) {
     const file = event.target.files[0]
 
     if (file) {
+      this.fileName = file.name;
       const reader = new FileReader()
       reader.readAsText(file)
 
