@@ -7,7 +7,7 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
 
 # Objetivo do projeto
-<p>O objetivo deste projeto é implementar uma solução com o Spring Boot, onde os candidatos para doação de sangue são informados, passam por uma análise e os resultados são retornados em formato de dados.</p>
+<p>O objetivo deste projeto é implementar uma solução, onde os candidatos para doação de sangue são informados, passam por uma análise e os resultados são retornados em formato de dados.</p>
 <p>Este repositório é a parte front-end, o repositório do back-end pode ser encontrado em: https://github.com/Felipeisantos/DoadorSangueAPI</p>
 
 #### Configurando o ambiente do projeto
