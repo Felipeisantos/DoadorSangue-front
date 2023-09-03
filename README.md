@@ -1,29 +1,29 @@
-# DoadorSangueFront
+<h1 align="center">DoadorSangue-front</h1>
+
 
 ![example branch parameter](https://github.com/Felipeisantos/DoadorSangue-front/actions/workflows/node.js.yml/badge.svg?event=push)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 16.2.0.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Objetivo do projeto
+<p>O projeto tem como objetivo implementar uma solução com Spring Boot onde serão informados candidados para doação de sangue, será feito uma análise desses doadores e retornado em forma de dados.</p> 
+<p>Este repositorio é o front-end: backend -> https://github.com/Felipeisantos/DoadorSangueAPI</p>
 
-## Code scaffolding
+#### Configurando ambiente do projeto 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Node versão 18x
 
-## Build
+https://nodejs.org/en/download
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+#### 1ª Faça um clone da aplicação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- `git clone https://github.com/Felipeisantos/DoadorSangue-front.git`
+- `cd DoadorSangue-front`
 
-## Running end-to-end tests
+#### 2ª Digite os comandos
+- `npm install -g @angular/cli`
+- `npm install`
+- `ng serve`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
