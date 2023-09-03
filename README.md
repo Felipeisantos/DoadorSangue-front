@@ -7,23 +7,24 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
 
 # Objetivo do projeto
-<p>O projeto tem como objetivo implementar uma solução com Spring Boot onde serão informados candidados para doação de sangue, será feito uma análise desses doadores e retornado em forma de dados.</p> 
-<p>Este repositorio é o front-end: backend -> https://github.com/Felipeisantos/DoadorSangueAPI</p>
+<p>O objetivo deste projeto é implementar uma solução com o Spring Boot, onde os candidatos para doação de sangue são informados, passam por uma análise e os resultados são retornados em formato de dados.</p>
+<p>Este repositório é a parte front-end, o repositório do back-end pode ser encontrado em: https://github.com/Felipeisantos/DoadorSangueAPI</p>
 
-#### Configurando ambiente do projeto 
-
+#### Configurando o ambiente do projeto
+Você pode baixar o Node.js em: https://nodejs.org/en/download
 Node versão 18x
 
-https://nodejs.org/en/download
+#### Passos para executar o projeto
 
-
-#### 1ª Faça um clone da aplicação
-
+##### Clone a aplicação:
 - `git clone https://github.com/Felipeisantos/DoadorSangue-front.git`
 - `cd DoadorSangue-front`
 
-#### 2ª Digite os comandos
+##### Instale o Angular CLI globalmente:
 - `npm install -g @angular/cli`
+##### Instale as dependências do projeto:
 - `npm install`
+##### Inicie o servidor:
 - `ng serve`
 
+Agora o projeto estará rodando localmente.
