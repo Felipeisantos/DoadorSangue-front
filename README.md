@@ -1,5 +1,7 @@
 # DoadorSangueFront
 
+![example branch parameter](https://github.com/Felipeisantos/DoadorSangue-front/actions/workflows/node.js.yml/badge.svg?event=push)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## Development server
