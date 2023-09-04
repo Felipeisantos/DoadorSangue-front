@@ -11,22 +11,18 @@ export class APIService {
     private http: HttpClient
   ) { }
 
-  private getOptions(data?: string) {
-    const token = sessionStorage.getItem('token');
-    const headers = data !== undefined ?
+  private getOptions() {
+    const headers =
       new HttpHeaders({
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
         'Content-Type': 'application/json'
-      }) :
-      new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      });
+      })
     return { headers };
   }
 
   public async uploadCandidatos(jsonData?: string) {
     try {
-      const response = await this.http.post<any>(`${this.baseUrl}analise/processar-candidatos`, jsonData, this.getOptions(jsonData)).toPromise()
+      const response = await this.http.post<any>(`${this.baseUrl}analise/processar-candidatos`, jsonData, this.getOptions()).toPromise()
       return response
     } catch (error) {
     }
